@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">-->
+    <title>InstaViz</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+
+<div id="intro" class="centered">
+    <p>Personal▒Instants</p>
+</div>
+
+<div id="about">
+    <p>Personal Instants is a visual representation of your activity on Instagram. It aims to reveal
+        the huge amount of data and content that we produce in this virtual universe and reveal which
+        type of user we are. You can explore your entire activity
+        <small>(download @ Instagram settings)</small>
+        to understand a little better the behavior you have on the social network. Personal Instants also provides the
+        possibility to generate your personal artifact using your data.
+    </p>
+    <h1 id="start">Start !</h1>
+</div>
+
+<div id="startUpload">
+    <h1>Click to upload your files</h1>
+    <input type="file" name="files" accept="image/*, application/json" class="inputfile" multiple id="startFileUpload"/>
+    <label for="startFileUpload">Upload files</label>
+    <div id="uploadInfo">
+        <h1 id="loadInfo">Help</h1>
+    </div>
+    <div id="files">
+        <p id="close">X</p>
+        <img src="files.png">
+    </div>
+
+    <div id="myUpload">
+        <h1 id="myLoad">Click to see my files instead</h1>
+    </div>
+
+    <h1 id="goLoad">Go</h1>
+
+</div>
+
+<div id="header">
+    <h1 id="menu">¤</h1>
+    <h1 id="title">Personal Instants</h1>
+    <h1 id="infoPI">i</h1>
+
+
+
+</div>
+
+<div class="container">
+    <div id="filesInfoPI">
+        <p id="closeInfoPI">X</p>
+        <img src="persona1.jpg">
+        <img src="persona2.jpg">
+    </div>
+</div>
+
+
+<div id="stats">
+    <h3 id="currentDays"></h3>
+    <h3 id="statsComments"></h3>
+    <h3 id="statsConnections"></h3>
+    <h3 id="statsLikes"></h3>
+    <h3 id="statsMedia"></h3>
+    <h3 id="statsSaved"></h3>
+    <h3 id="statsSeen"></h3>
+</div>
+
+<div id="controls">
+    <!--
+    <div id="upload">
+        <input type="file" name="files" accept="image/*, application/json" class="inputfile" multiple id="fileUpload"/>
+        <label for="fileUpload">Upload files</label>
+    </div>
+    -->
+
+    <div id="modes">
+        <p> Visualization Mode</p>
+        <div id="modeButtons">
+            <div class="modes" id="grid"><p>l▒I</p></div>
+            <div class="modes" id="persona"><p>•¤*</p></div>
+        </div>
+    </div>
+
+    <div id="dates">
+        <label for="endDate">End Date</label>
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" value="" min="" max="">
+        <input type="date" id="endDate" value="2014-11-28" min="" max="">
+        <input type="button" id="go" value="Go">
+    </div>
+
+    <div id="checks">
+        <p> Displayed Organisms</p>
+        <div id="checkButtons">
+            <div class="checks" id="Like"></div>
+            <div class="checks" id="Seen"></div>
+            <div class="checks" id="Connection"></div>
+            <div class="checks" id="Comment"></div>
+            <div class="checks" id="Media"></div>
+            <div class="checks" id="Saved"></div>
+
+        </div>
+    </div>
+
+    <div class="slidecontainer">
+        <p>Organism Size</p>
+        <input type="range" min="5" max="10" value="5" step="1" class="slider" id="myRange">
+    </div>
+
+    <div id="canvasSaver">
+        <div id="canvasButton">Export</div>
+    </div>
+</div>
+
+<div id="info">
+    <p>Personal Instants is a visual representation of your activity on Instagram. It aims to reveal
+        the huge amount of data and content that we produce in this virtual universe and reveal which
+        type of user we are. You can explore your entire activity
+        <small>(download @ Instagram settings)</small>
+        to understand a little better the behavior you have on the social network. Personal Instants also provides the
+        possibility to generate your personal artifact using your data.
+    </p>
+</div>
+
+<div id="organism">
+    <div id="organismType"></div>
+    <div id="organismData">
+    </div>
+    <!--ACTUAL P QUE IMPRIME DATA BASICA NO CANTO SUPERIOR DIREITO. TALVEZ POSSA SER IMPRESSO NO MENU A ESQUERDA ? -->
+</div>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/underscore@1.11.0/underscore-min.js"></script>
+
+<!--
+<script src="p5.min.js"></script>
+<script defer src="https://unpkg.com/p5.collide2d"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"></script>
+-->
+<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+<script type="text/javascript" src="p5.svg.js"></script>
+<script src="p5.dom.min.js"></script>
+<!--<script type="text/javascript" src="Cell.js"></script>-->
+<script type="text/javascript" src="Organism.js"></script>
+<!--<script type="text/javascript" src="Receptor.js"></script>-->
+<script type="text/javascript" src="utilsNew.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="persona.js"></script>
+<script type="text/javascript" src="symbols.js"></script>
+
+
+</body>
+</html>

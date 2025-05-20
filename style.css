@@ -1,0 +1,439 @@
+:root {
+/ / --main-bg-color: rgb(55, 50, 145);
+    --main-bg-color: rgb(242, 242, 242);
+}
+
+@font-face{
+    font-family: "mainFont";
+    src: url('fonts/FKRasterGrotesk-Smooth.ttf');
+
+}
+
+body {
+    font-family: "mainFont";
+    margin: 0;
+    padding: 0;
+    background: var(--main-bg-color);
+    
+}
+textarea:focus, input:focus, body:focus{
+    outline: none;
+}
+
+/* ---------------- INITIAL MENUS ----------------  */
+.centered{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered p{
+    font-size: 100px;
+}
+
+#about{
+    display: none;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 90px;
+    position: absolute;
+    left: 90px;
+    top: 90px;
+    width: calc(100vw - 380px);
+    height: calc(100vh - 380px);
+    font-size: 35px;
+    line-height: 1.2;
+}
+
+#about p{
+    width: 70%;
+    margin: 0;
+    font-size: 2vw;
+}
+
+#start{
+    background-color: rgb(22,22,22);
+    padding: 20px;
+}
+.p5Canvas {
+    display: none;
+    z-index: -1;
+    position: absolute;
+}
+
+#startUpload{
+    text-align: center;
+    display: none;
+    border: rgb(22,22,22) 10px dashed;
+    padding: 90px;
+    position: absolute;
+    left: 90px;
+    top: 90px;
+    width: calc(100vw - 380px);
+    height: calc(100vh - 380px);
+//display: inline-flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+}
+
+#myUpload{
+    text-align: center;
+    display: none;
+   position: absolute;
+    bottom: -50px;
+    width: 100vw;
+    height: 150px;
+    flex-flow: column;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#uploadInfo{
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#files{
+    position: absolute;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--main-bg-color);
+    border: black 5px solid;
+    filter: drop-shadow(16px 16px 10px black);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#filesInfoPI{
+
+    text-align: center;
+    background-color: var(--main-bg-color);
+    border: black 5px solid;
+    filter: drop-shadow(16px 16px 10px black);
+}
+
+
+#close, #closeInfoPI{
+    position: absolute;
+    margin: 0;
+    top: 6px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#files img, #filesInfoPI img{
+    height: 50vh;
+}
+
+#goLoad,#myUpload, #uploadInfo, #files, #filesInfoPI{
+    display: none;
+}
+
+
+#info{
+    display: none;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 90px;
+    position: fixed;
+    top: 90px;
+    width: calc(100vw - 180px);
+    height: calc(100vh - 270px);
+    font-size: 35px;
+    line-height: 1.2;
+}
+
+/* ---------------- TITLE BAR & STATS ----------------  */
+
+#header{
+    display: none;
+    position: fixed;
+}
+#menu {
+    display: none;
+    position: fixed;
+    left: 30px;
+    z-index: 2;
+}
+
+#infoPI {
+    display: none;
+    position: fixed;
+    right: 15px;
+    z-index: 2;
+    border: 5px solid black;
+    justify-content: center;
+    align-items: center;
+    top: -7.5px;
+    width: 50px;
+    height: 50px;
+}
+
+#title {
+    font-size: 38px;
+    width: 100vw;
+    height: 70px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    margin: 0;
+
+    position: fixed;
+}
+
+#toggle > p{
+    font-size: 50px;
+    display: inline-flex;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+}
+
+
+#stats{
+    background-color: lightyellow;
+    width: 100vw;
+    position: fixed;
+    display: none;
+    padding: 0;
+    top: 90px;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size:15px;
+}
+
+/* ---------------- ORGANISM DATA DISPLAY ----------------  */
+#activityData {
+    width: 70%;
+    font-size: 16px;
+
+}
+
+#organism {
+    display: none;
+    text-align: center;
+    overflow: hidden;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    //border-radius: 10px;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    margin: -150px 0 0 -150px;
+}
+
+#organismData{
+    text-align: center;
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 90%;
+    height: 30%;
+}
+
+/* ---------------- CONTROLS ----------------  */
+
+.flex{
+    display: inline-flex !important;
+}
+#controls {
+    position: fixed;
+    top: 150px;
+    display: none;
+    width: 300px;
+    height: calc(100vh - 150px);
+    align-items: center;
+    background: ghostwhite;
+    flex-flow: column;
+}
+
+#controls > div{
+    margin-top: 10px;
+    padding-top: 20px;
+    margin-bottom: 10px;
+    border-top: black 4px dotted;
+    width: 90%;
+}
+
+/* ---------------- CONTROLS > MODES ----------------  */
+#modeButtons {
+    display: inline-flex;
+    justify-content: center;
+    width: 80%;
+}
+.modes{
+    width: 50px;
+    height: 50px;
+    color: rgb(22,22,22);
+}
+
+.modes:hover{
+    cursor: pointer;
+}
+/* ---------------- CONTROLS > DATES ----------------  */
+#dates > label{
+    color: black;
+    width: 48%;
+    text-align: center;
+    float: right;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+#dates > input[type=date]{
+    width: 48%;
+    background-color:  transparent;
+    border: none;
+}
+
+#go{
+    width: 100%;
+    background-color: black;
+    color: lightseagreen;
+    border: none;
+    padding: 5px;
+    margin-top: 5px;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    padding: 25px;
+    font-size: 1em;
+    font-weight: 500;
+    background-color: rgb(22,22,22);
+    display: inline-block;
+}
+
+.inputfile:focus + label, .inputfile + label:hover, #start:hover {
+    background-color: dimgrey;
+}
+
+.inputfile + label, #menu, #infoPI, #start, #goLoad, #myUpload, input[type=date]{
+    cursor: pointer; /* "hand" cursor */
+}
+
+/* ------------------------ CONTROLS > CHECKS ------------------------  */
+#checks, #modes{
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+#checkButtons {
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+.checks{
+    width: 6px;
+    height: 6px;
+    background: black;
+}
+
+.hide{
+    opacity: 0.3;
+}
+
+#Like{
+    border: rgb(234, 108, 124) 5px solid;
+}
+
+#Connection{
+    border: rgb(61, 234, 209) 5px solid;
+}
+
+#Comment{
+    border: rgb(54, 156, 191) 5px solid;
+}
+
+#Media{
+    border: rgb(40, 20, 170) 5px solid;
+}
+
+#Saved{
+    border: rgb(115, 54, 123) 5px solid;
+}
+
+#Seen{
+    border: rgb(249, 219, 165) 5px solid;
+}
+
+/* ------------------- CONTROLS > ORGANISM SIZE SLIDER ------------------------  */
+
+.slidecontainer{
+    text-align: center;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 70%;
+    height: 5px;
+    background: #222222;
+    outline: none;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #222222;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #4CAF50;
+    cursor: pointer;
+}
+
+/* ------------------------ CONTROLS > EXPORT BUTTON ------------------------  */
+
+#canvasSaver{
+    display: inline-flex;
+    justify-content: center;
+}
+
+#canvasButton{
+    width: 130px;
+    height: 40px;
+    color: black;
+    text-align: center;
+    padding-top: 15px;
+}
+
+#canvasButton:hover{
+    cursor: pointer;
+}
