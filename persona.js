@@ -97,16 +97,6 @@ function drawDayLine() {
             westVector.y + (0.25 * west) * sin(l * TWO_PI / 10));
     }
 
-    /*
-    stroke(42, 100, 0);
-    strokeWeight(5);
-    line(w / 2, h / 2, northVector.x, northVector.y);
-    line(w / 2, h / 2, eastVector.x, eastVector.y);
-    line(w / 2, h / 2, southVector.x, southVector.y);
-    line(w / 2, h / 2, westVector.x, westVector.y);
-    */
-
-
     controlPoints.push(northVector);
     controlPoints.push(eastVector);
     controlPoints.push(southVector);
@@ -117,17 +107,6 @@ function drawDayLine() {
     controlPoints.push(lastAdditionalControlPoint);
     controlPoints.unshift(firstAdditionalControlPoint);
 
-    /*
-        push();
-        noFill();
-        stroke(250,190,0);
-        strokeWeight(5);
-        beginShape();
-        for (let p of controlPoints) curveVertex(p.x, p.y);
-        endShape();
-        pop();
-        */
-
 }
 
 
@@ -136,33 +115,20 @@ function drawDayLine() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function drawLine() {
-    //curveTightness(map(mouseX, 0, width, -5, 5));
+    
     let t = map(avgHourActivityPercentage, 0.3, 0.7, -15, 15);
-    //console.log(avgHourActivityPercentage, t);
+    
     let lastPoint = sortedPoints[0][0]; // duplicate the first point to close the line
     let firstAdditionalControlPoint = sortedPoints[sortedPoints.length - 1][0].copy();
     let lastAdditionalControlPoint = sortedPoints[1][0].copy();
     let controlPoints = [];
     for (let p = 0; p < sortedPoints.length; p++) {
-
-        //curveTightness(random(-5,5));
-        controlPoints.push(sortedPoints[p][0]);
+            controlPoints.push(sortedPoints[p][0]);
     }
     controlPoints.push(lastPoint);
     controlPoints.push(lastAdditionalControlPoint);
     controlPoints.unshift(firstAdditionalControlPoint);
 
-    /*  // PARA TORNAR LINHAS RETAS
-    let b=[];
-
-    for(var i = 0; i< controlPoints.length;++i){
-        b.push(controlPoints[i]);
-        b.push(controlPoints[i]);
-        b.push(controlPoints[i]);
-    }
-    controlPoints=b;
-
-    */
 
     push();
     scale(1.5);
@@ -184,16 +150,15 @@ function drawLine() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function drawCatmullRomSpline() {
-    //curveTightness(map(mouseX, 0, width, -5, 5));
+   
     let t = map(avgHourActivityPercentage, 0.3, 0.7, -15, 15);
-    //console.log(avgHourActivityPercentage, t);
+   
     let lastPoint = points[0][0]; // duplicate the first point to close the line
     let firstAdditionalControlPoint = points[points.length - 1][0].copy();
     let lastAdditionalControlPoint = points[1][0].copy();
     let controlPoints = [];
     for (let p = 0; p < points.length; p++) {
 
-        //curveTightness(random(-5,5));
         controlPoints.push(points[p][0]);
     }
     controlPoints.push(lastPoint);
@@ -232,25 +197,16 @@ function drawControlPoints() {
 
     noStroke();
     let i = 0;
-    // stroke(42);
-    // strokeWeight(5);
+    
 
     for (let p of points) {
         fill(cls[i++]);
-        //cls[i].setAlpha(50*i);
         circle(p[0].x, p[0].y, p[1]);
 
-       /*
-        circle(p[0].x, p[0].y-p[1]/2, map(stats[p[2]].dawn, 0, stats[p[2]].total, 0, p[1]));          // Dawn
-        circle(p[0].x+p[1]/2, p[0].y, map(stats[p[2]].morning, 0, stats[p[2]].total, 0, p[1]));       // Morning
-        circle(p[0].x, p[0].y+p[1]/2, map(stats[p[2]].afternoon, 0, stats[p[2]].total, 0, p[1]));     // Afternoon
-        circle(p[0].x-p[1]/2, p[0].y, map(stats[p[2]].night, 0, stats[p[2]].total, 0, p[1]));         // Night
-        */
-
-
+     
         stroke(42);
         noFill();
-        //console.log(p[2]);
+        
 
         let stkDawn = map(stats[p[2]].dawn, 0, stats[p[2]].total, 0, p[1]/3);
         strokeWeight(stkDawn);
@@ -294,8 +250,7 @@ function persona() {
     let seqPoints = [];
 
     for (let s = 0; s < seqs.length; s++) {
-        //pointX = 0;
-        //pointY = 0;
+        
         CommentCount = 0;
         ConnectCount = 0;
         LikeCount = 0;
@@ -345,14 +300,12 @@ function persona() {
         let finalColorG = (CommentCount * colorComment[1] + ConnectCount * colorConnect[1] + LikeCount * colorLike[1] + MediaCount * colorMedia[1] + SavedCount * colorSaved[1] + SeenCount * colorSeen[1]) / (seqs[s].length - 1);
         let finalColorB = (CommentCount * colorComment[2] + ConnectCount * colorConnect[2] + LikeCount * colorLike[2] + MediaCount * colorMedia[2] + SavedCount * colorSaved[2] + SeenCount * colorSeen[2]) / (seqs[s].length - 1);
 
-        //console.log(finalColorR,finalColorG,finalColorB);
-        //console.log(pointX, pointY, seqs[s].length);
         pointX /= (seqs[s].length);
         pointY /= (seqs[s].length);
 
         seqPoints.push(createVector(pointX, pointY));
         fill(finalColorR, finalColorG, finalColorB);
-        //let c = ceil(random(40)/10)*10;
+     
         fill(42, 150);
         circle(pointX, pointY, seqs[s].length - 1);
     }

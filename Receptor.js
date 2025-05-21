@@ -50,7 +50,6 @@ class Receptor {
 
 
         this.ang -= 0.05;
-        //console.log(ang)
     }
 
     positionSegment(a, b) {
@@ -71,12 +70,7 @@ class Receptor {
 
     segment(x, y, a, sw) {
         strokeWeight(sw);
-        //stroke(255, 100, 70);
-        //stroke(255, 182, 193);
-        //stroke(0,92,67);
 
-        //stroke(252, 232, 190);
-        //stroke(255,99,71);
         stroke(240,150,20);
         push();
         translate(x, y);

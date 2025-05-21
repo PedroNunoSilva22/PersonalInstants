@@ -52,16 +52,13 @@ class Organism {
             $('#organismType').empty();
             $('#organismData').empty();
 
-            console.log(this.data);
-            console.log(organisms.indexOf(this));
+         
 
             fill(0);
-            //$('#organismData').show("slow");
             $('#organism').css("display", "inline-flex").hide().fadeIn(1000);
-            //$('#activityData').text(JSON.stringify(this.data));
 
             let info = _.pairs(this.data);
-            console.log(info);
+            
             $('#organismData').append("<small>" + this.date + "</small>");
             $('#organismData').append("<small>" + info[0][1] + "</small><br>");
 
@@ -120,25 +117,18 @@ class Separator {
         text(this.date.substr(5), posX + bitModule * 0.25, posY + bitModule * 3);
 
 
-        /*
-        fill(235,123,13,40);
-        ellipse(posX,posY,this.sequence,this.sequence);
-        */
-
         fill(212);
         for (let g = 0; g < this.gap; g++) {
 
             // ADICIONAR VERIFICAÇÃO PARA O CASO DO GAP SER MAIOR QUE A LIHA DA JANELA
 
             let posX = this.posX - bitModule * 8 - bitModule * 5 * g;
-            //let posX = this.posX - bitModule * 9 - bitModule * 5 * g;
             let posY = this.posY + bitModule * 2.5 - (this.size / 2);
 
             if (posX < 100) {
                 posX = (100 + column * bitModule * 5) - (100 - posX);
                 posY -= bitModule * 5;
             }
-            //rect(posX, posY , bitModule * 3, this.size);
             rect(posX, posY, bitModule, bitModule);
         }
     }
@@ -151,19 +141,16 @@ class Separator {
 
             $('#organismType').empty();
             $('#organismData').empty();
-            console.log(this.data);
+          
             fill(0);
 
             $('#organism').css("display", "inline-flex").hide().fadeIn(1000);
-
-            //let information = JSON.stringify(this.data);
-            //$('#organismData').append(information);
 
 
             for (let d = 0; d < this.data.length; d++) {
 
                 let info = _.pairs(this.data[d]);
-                //console.log(info);
+               
 
                 if(d==0)$('#organismType').append("<small>" + this.date + "</small>");
                 $('#organismData').append("<br><small>" + info[0][1] + "</small>");
@@ -197,13 +184,6 @@ class Comment extends Organism {
     displayGrid() {
         this.setPos();
 
-        /*
-        noFill();
-        stroke(...colorComment, this.alphaColor);
-        strokeWeight(this.size);
-        ellipse(this.x,this.y,this.size,this.size);
-         */
-
         noStroke();
 
         fill(...colorComment, this.alphaColor);
@@ -223,12 +203,6 @@ class Connection extends Organism {
 
     displayGrid() {
         this.setPos();
-        /*
-        noFill();
-        stroke(...colorConnect, this.alphaColor);
-        strokeWeight(this.size);
-        ellipse(this.x,this.y,this.size,this.size);
-         */
 
         noStroke();
 
@@ -291,12 +265,7 @@ class Like extends Organism {
 
     displayGrid() {
         this.setPos();
-        /*
-        noFill();
-        stroke(...colorLike, this.alphaColor);
-        strokeWeight(this.size);
-        ellipse(this.x,this.y,this.size,this.size);
-        */
+       
         noStroke();
         if (this.type === "mediaLikesByDay") {
             fill(...colorLike, this.alphaColor);
@@ -313,7 +282,6 @@ class Like extends Organism {
         } else {
             fill(...colorLike, this.alphaColor);
 
-            //ellipseMode(CORNER);
             rect(this.x + bitModule, this.y + bitModule, bitModule * 3, bitModule * 3);
 
             fill(0, this.alphaColor);
@@ -333,13 +301,7 @@ class Media extends Organism {
 
     displayGrid() {
         this.setPos();
-        /*
-        noFill();
-        stroke(...colorMedia, this.alphaColor);
-        strokeWeight(this.size);
-        ellipse(this.x,this.y,this.size,this.size);
-         */
-
+      
         noStroke();
 
         if (this.type === "photosByDay") {
@@ -407,12 +369,7 @@ class Saved extends Organism {
 
     displayGrid() {
         this.setPos();
-        /*
-        noFill();
-        stroke(...colorSaved, this.alphaColor);
-        strokeWeight(this.size);
-        ellipse(this.x,this.y,this.size,this.size);
-         */
+       
 
         noStroke();
 
@@ -442,12 +399,7 @@ class Seen extends Organism {
 
     displayGrid() {
         this.setPos();
-        /*
-        noFill();
-        stroke(...colorSeen, this.alphaColor);
-        strokeWeight(this.size);
-        ellipse(this.x,this.y,this.size,this.size);
-        */
+
         noStroke();
 
 

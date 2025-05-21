@@ -11,13 +11,10 @@ class Cell {
 
     display() {
         push();
-        //fill(250,90,80);
         stroke(115,54,123);
-        //fill(226, 123, 156);
         fill(55, 50, 145);
         strokeWeight(5);
 
-//        fill(195,130,120);
         beginShape();
 
         this.cellPoints = [];
@@ -29,8 +26,6 @@ class Cell {
             let r = map(noise(xoff, yoff, zoff), 0, 1, this.radius, this.radius + this.offset);
             let x = width / 2 + r * cos(a);
             let y = height / 2 + r * sin(a);
-            //let x = int((width / 2 + r * cos(a))/10)*10;
-            //let y = int((height / 2 + r * sin(a))/10)*10;
             curveVertex(x,y);
             this.cellPoints.push(createVector(x, y));
         }
@@ -58,12 +53,10 @@ class Core extends Cell{
 
     display() {
         push();
-        //fill(250,90,80);
         stroke(226, 123, 156);
         fill(252, 232, 190);
         strokeWeight(5);
 
-//        fill(195,130,120);
         beginShape();
 
         this.cellPoints = [];
@@ -75,8 +68,6 @@ class Core extends Cell{
             let r = map(noise(xoff, yoff, zoff), 0, 1, this.radius, this.radius + this.offset);
             let x = width / 2 + r * cos(a);
             let y = height / 2 + r * sin(a);
-            //let x = int((width / 2 + r * cos(a))/10)*10;
-            //let y = int((height / 2 + r * sin(a))/10)*10;
             curveVertex(x,y);
             this.cellPoints.push(createVector(x, y));
         }

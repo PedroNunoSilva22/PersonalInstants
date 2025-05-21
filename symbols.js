@@ -1,12 +1,3 @@
-
-
-// ESTA CLASSE SE CALHAR VAI PASSAR PARA
-
-// NAS FUNÇÕES DE DESENHO VER O MAXIMO DE DADOS PARA FAZER CORRESPONDER UM VALOR ADEQUADO A CADA NOVO ELEMENTO.
-// NESTA VERSÃO TEMOS QUE ENGLOBAR VÁRIOS DADOS NUM SÓ ELEMENTO QUE TEM QUE SER ACTUALIZADOS TODOS OS DIAS (NUMA VERSÃO ACUMULATIVA)
-
-
-
 function createSymbol(today, type, data, id, pos, seq, tod) {
 
 /////////////////////////////////////////////////////////////////////////////
@@ -130,7 +121,6 @@ function createSymbol(today, type, data, id, pos, seq, tod) {
         connectionsPointsY.push(organisms[organisms.length-1].y);
     }
 
-    // ADICIONAR BLOQUEADOS ??
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -418,9 +408,7 @@ function addDaySector(diffDays,sequence,data) {
         let weeks = int(diffDays/7);
         let days = diffDays%7;
         newDiffDays = weeks+days-1;
-        //pos+=weeks+days;
         pos+=diffDays;
-        //console.log(diffDays + " days || " + today + ' —— ' +last + " || " + newDiffDays);
     }
     else{
         size=bitModule*2;
@@ -431,6 +419,4 @@ function addDaySector(diffDays,sequence,data) {
 
      organisms.push(new Separator(today, pos-1, diffDays-1,size,sequence,data));
     return organisms[organisms.length-1];
-    //text(today,100 + (pos % 100) * 20, 100 + int(pos / 100) * 20);
-    //console.log(diffDays + " days || " + today + ' —— ' +last);
 }

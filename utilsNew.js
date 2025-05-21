@@ -37,8 +37,7 @@ function preload() {
 
 function setupData() {
     dataSetup = true;
-    //unify(files['seen']);
-    console.log("correu");
+    
 
 
     packageByDay = [];
@@ -58,7 +57,6 @@ function setupData() {
     followersByDay = connectionsByDay(files['connections'], "relationships_followers", 'followersByDay');
     hashtagsByDay = connectionsByDay(files['connections'], "relationships_following_hashtags", 'hashtagsByDay');
     followingByDay = connectionsByDay(files['connections'], "relationships_following", 'followingByDay');
-    // ADICIONAR BLOQUEADOS ??
 
 /////////////////////////////////////////////////////////////////////////////
 //                          LIKES
@@ -95,8 +93,6 @@ function setupData() {
 /////////////////////////////////////////////////////////////////////////////
 
     if (files['seen']) {
-// let adsClickedByDay = seenByDay(files['seen'].ads_clicked, 'caption');
-        //chainingByDay = seenByDay(files['seen'].chaining_seen, 'username', 'chainingByDay');
 
         adsByDay = seenByDay(files['seen'], "impressions_history_ads_seen", 'adsByDay');
         postsByDay = seenByDay(files['seen'], "impressions_history_posts_seen", 'postsByDay');
@@ -300,7 +296,6 @@ function savesByDay(dataset, id) {
             for ([key] of Object.entries(val["string_map_data"]))
                 if (key.includes("artilhado") || key.includes("Shared")) dateX = new Date(val["string_map_data"][key].timestamp * 1000).toISOString().split("T");
 
-            //var dateX = new Date(val["string_map_data"]["Compartilhado por"].timestamp * 1000).toISOString().split("T");
             var date = dateX[0];
             var timer = dateX[1].substr(0, 8);
 
@@ -336,7 +331,6 @@ function seenByDay(dataset, dataX, id) {
             for (const [key] of Object.entries(val["string_map_data"]))
                 if (key.includes("ora") || key.includes("Time")) dateX = new Date(val["string_map_data"][key].timestamp * 1000).toISOString().split("T");
 
-            //var dateX = new Date(val["string_map_data"]["Hora"].timestamp * 1000).toISOString().split("T");
             var date = dateX[0];
             var timer = dateX[1].substr(0, 8);
 

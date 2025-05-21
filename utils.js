@@ -19,7 +19,6 @@ function preload() {
 function setupData() {
     dataSetup=true;
     unify(files['seen']);
-    console.log("correu");
 
 
     packageByDay = [];
@@ -39,7 +38,6 @@ function setupData() {
     followersByDay = connectionsByDay(files['connections'], 'followers', 'followersByDay');
     followingByDay = connectionsByDay(files['connections'], 'following', 'followingByDay');
     hashtagsByDay = connectionsByDay(files['connections'], 'following_hashtags', 'hashtagsByDay');
-    // ADICIONAR BLOQUEADOS ??
 
 /////////////////////////////////////////////////////////////////////////////
 //                          LIKES
@@ -77,7 +75,6 @@ function setupData() {
 
     if (files['seen']) {
         adsByDay = seenByDay(files['seen'].ads_seen, 'author', 'adsByDay');
-// let adsClickedByDay = seenByDay(files['seen'].ads_clicked, 'caption');
         chainingByDay = seenByDay(files['seen'].chaining_seen, 'username', 'chainingByDay');
         postsByDay = seenByDay(files['seen'].posts_seen, 'author', 'postsByDay');
         videosByDay = seenByDay(files['seen'].videos_watched, 'author', 'videosByDay');

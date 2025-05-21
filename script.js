@@ -72,7 +72,6 @@ function setup() {
     if (loads) {
         if (!dataSetup) setupData();
 
-        console.log("defaulting");
 
         column = ceil((windowWidth - 200) / (bitModule * 5));
 
@@ -120,15 +119,7 @@ function setup() {
 
 
         if (mode == "grid") for (let d = 0; d < days.length; activityByDay(d++, start, ends)) ;
-        //console.log(new Date(times / stats.total));
-
-        /*  PERCENTAGEM DO DIA PASSADO
-
-        let avgHourActivity = new Date(new Date(times / stats.total));
-        avgHourActivityPercentage = (avgHourActivity.getHours() * 3600 + avgHourActivity.getMinutes() * 60 + avgHourActivity.getSeconds() + avgHourActivity.getMilliseconds() / 1000) / 86400;
-        console.log(avgHourActivityPercentage);
-        */
-
+     
         clear();
         if (mode == "grid") canvas = createCanvas(windowWidth, 100 + organisms[organisms.length - 1].y + bitModule * 5);
         else canvas = createCanvas(windowWidth, windowWidth);
@@ -145,14 +136,12 @@ function setup() {
 
 function ff() {
     saveCanvas('myCanvas', 'png');
-    //save();
 }
 
 function windowResized() {
     if (mode == "grid") {
-        console.log("resizing");
-        column = ceil((windowWidth - 200) / (bitModule * 5));
-        console.log(windowWidth);
+       
+        column = ceil((windowWidth - 200) / (bitModule * 5));     
 
         if (loads) {
             organisms[organisms.length - 1].setPos();
@@ -211,7 +200,6 @@ function draw() {
 
                     timeOfLastSwitch = millis();
                 } else {
-                    console.log("TERMINOU");
                     noLoop();
                 }
             }
@@ -231,7 +219,7 @@ function drawit() {
         points.push([createVector(
             seenX = w / 2 + parTotal * cos(4 * TWO_PI / 6),
             seenY = h / 2 + parTotal * sin(4 * TWO_PI / 6)),
-            //map(stats.seen.total, 1, stats.total, 20, 400),
+           
             Math.sqrt((stats.seen.total / PI)) * 5,
             "seen"]);
 
@@ -243,7 +231,7 @@ function drawit() {
         points.push([createVector(
             commentsX = w / 2 + parTotal * cos(5 * TWO_PI / 6),
             commentsY = h / 2 + parTotal * sin(5 * TWO_PI / 6)),
-            //map(stats.comments.total, 1, stats.total, 20, 400),
+           
             Math.sqrt((stats.comments.total / PI)) * 5,
             "comments"]);
 
@@ -255,7 +243,7 @@ function drawit() {
         points.push([createVector(
             connectionsX = w / 2 + parTotal,
             connectionsY = h / 2),
-            //map(stats.connections.total, 1, stats.total, 20, 400),
+          
             Math.sqrt((stats.connections.total / PI)) * 5,
             "connections"]);
 
@@ -267,7 +255,7 @@ function drawit() {
         points.push([createVector(
             savedX = w / 2 + parTotal * cos(TWO_PI / 6),
             savedY = h / 2 + parTotal * sin(TWO_PI / 6)),
-            //map(stats.saved.total, 1, stats.total, 20, 400),
+          
             Math.sqrt((stats.saved.total / PI)) * 5,
             "saved"]);
 
@@ -279,7 +267,7 @@ function drawit() {
         points.push([createVector(
             mediaX = w / 2 + parTotal * cos(2 * TWO_PI / 6),
             mediaY = h / 2 + parTotal * sin(2 * TWO_PI / 6)),
-            //map(stats.media.total, 1, stats.total, 20, 400),
+          
             Math.sqrt((stats.media.total / PI)) * 5,
             "media"]);
 
@@ -291,7 +279,7 @@ function drawit() {
         points.push([createVector(
             likesX = w / 2 - parTotal,
             likesY = h / 2),
-            //map(stats.likes.total, 1, stats.total, 20, 400),
+            
             Math.sqrt((stats.likes.total / PI)) * 5,
             "likes"]);
 
@@ -311,8 +299,6 @@ function drawit() {
 function render() {
     mode = "grid";
 
-    console.log("rendering");
-
 
     let visible = $(".checks").not('.hide');
     visibleOrganismTypes = [];
@@ -320,8 +306,7 @@ function render() {
     for (let e = 0; e < visible.length; e++) {
         visibleOrganismTypes.push(visible[e].id);
     }
-    //visibleOrganismTypes.push("Separator");
-    console.log(visibleOrganismTypes);
+    
 
     for (let o = 0; o < organisms.length; o++) {
 
@@ -342,7 +327,7 @@ function mousePressed() {
         for (let o = 0; o < organisms.length; o++) {
             if (organisms[o].visible || organisms[o].constructor.name == "Separator") {
                 if (organisms[o].clickedGrid()) {
-                    console.log(organisms[o])
+                  
                     $('#organismType').prepend(organisms[o].constructor.name + "<br><br>");
                     break;
                 }
@@ -415,8 +400,6 @@ function activityByDay(i, sd, ed) {
         aggregateByDay = aggregateByDay.flat();
         aggregateByDay = _.sortBy(aggregateByDay, 'timer');
 
-        console.log(aggregateByDay);
-
 
         const todayDate = new Date(today);
         const lastDate = new Date(last);
@@ -430,35 +413,35 @@ function activityByDay(i, sd, ed) {
         let timeOfDay = "";
 
         aggregateByDay.forEach((data, index, array) => {
-            //if (lastOrganismType !== "Separator") {
+            
             time += data.timer;
 
             time = new Date(time);
             let dayElapsed = (time.getHours() * 3600 + time.getMinutes() * 60 + time.getSeconds() + time.getMilliseconds() / 1000) / 86400;
-            //console.log(index + " " + dayElapsed + " " + data.timer);
+            
             if (dayElapsed <= 0.25) {
                 stats.dayTime.dawn += 1;
                 timeOfDay = "dawn";
-                // stats[data.type].dawn +=1;
+               
             } else if (dayElapsed <= 0.5) {
                 stats.dayTime.morning += 1;
                 timeOfDay = "morning";
-                // stats[data.type].morning +=1;
+               
             } else if (dayElapsed <= 0.75) {
                 stats.dayTime.afternoon += 1;
                 timeOfDay = "afternoon";
-                // stats[data.type].afternoon +=1;
+               
             } else {
                 stats.dayTime.night += 1;
                 timeOfDay = "night";
-                // stats[data.type].night +=1;
+               
             }
             dayElapsed *= 86400000;
             times += dayElapsed;
 
             time = days[i] + " ";
             if (data.type === lastOrganismType) {
-                //console.log(data.type, lastOrganismType, sequence);
+                
                 sequence++;
 
             } else if (lastOrganismType !== "Separator") {
@@ -467,12 +450,12 @@ function activityByDay(i, sd, ed) {
                 if (maxSequence < sequence) maxSequence = sequence;
                 sequence = 1;
             }
-            // }
+           
             if (index === array.length - 1) daySeqs.push([data.type, sequence]);
 
             createSymbol(today, data.type, data, idx, pos, sequence, timeOfDay);
             lastOrganismType = data.type;
-            //console.log(data.type, lastOrganismType);
+           
             pos++;
             idx++;
         });
@@ -531,9 +514,7 @@ function readFiles(uploaderInput) {
             else {
                 for (let key in files) {
                     if (files[key].length > 1) {
-                        console.log(key, files[key]);
-                        //files[key] = mergeJson(files[key]);
-
+                      
                     } else if (files[key][0] == "You have no data in this section") {
                         files[key] = undefined;
                     } else {
@@ -543,8 +524,6 @@ function readFiles(uploaderInput) {
 
                 for (let f in files) if (files[f] == undefined) delete files[f];
                 existingFiles = Object.keys(files);
-
-                //console.log(files);
 
                 loads = true;
                 dataSetup = false;
@@ -586,8 +565,6 @@ function readFiles(uploaderInput) {
 
         for (let key in files) {
             if (files[key].length > 1) {
-                console.log(key, files[key]);
-                //files[key] = mergeJson(files[key]);
 
             } else if (files[key][0] == "You have no data in this section") {
                 files[key] = undefined;
@@ -598,8 +575,6 @@ function readFiles(uploaderInput) {
 
         for (let f in files) if (files[f] == undefined) delete files[f];
         existingFiles = Object.keys(files);
-
-        //console.log(files);
 
         loads = true;
         dataSetup = false;
@@ -648,18 +623,12 @@ $(document).ready(function () {
         $('#startUpload').css("display", "inline-flex").hide().delay(1000).fadeIn(1000);
         $('#myUpload').css("display", "inline-flex").hide().delay(1000).fadeIn(1000);
         $('#uploadInfo').css("display", "inline-flex").hide().delay(1000).fadeIn(1000);
-        // $('#files').css("display", "inline-flex").hide().delay(1000).fadeIn(1000);
-
     });
 
 
     $("#menu").click(function () {
         $('#controls').toggleClass("flex");
 
-        // if ($('#controls').hasClass("flex")) canvas.position(300, 90);
-        // else canvas.position(0, 90);
-
-        // $('#info').toggleClass("flex");
         info = !info;
     });
 
@@ -667,13 +636,10 @@ $(document).ready(function () {
         seqs = [];
         start = $("#startDate").val();
         ends = $("#endDate").val();
-        console.log(start);
-        console.log(ends);
-
+       
         if (start == "") start = days[0];
         if (ends == "") ends = days[days.length - 1];
-        console.log(start);
-        console.log(ends);
+       
         if (start < ends) {
             setup();
             draw();
@@ -697,10 +663,7 @@ $(document).ready(function () {
 
     $(".modes").on('click', function () {
         mode = $(this).attr('id');
-        console.log($(this).attr('id'));
-        console.log(mode);
-
-
+       
         if (mode == "grid") { //¤
             $("#title").text("Personal▒Instants");
         } else {
@@ -714,9 +677,7 @@ $(document).ready(function () {
 
     $(".checks").on('click', function () {
 
-        //type = $(this).attr('id');  // ADICIONAR VARIAVEIS DE ENTRADA [INITIAL DATE, FINAL DATE]
         $(this).toggleClass('hide');
-        //console.log(type);
         background(242);
         render();
 
